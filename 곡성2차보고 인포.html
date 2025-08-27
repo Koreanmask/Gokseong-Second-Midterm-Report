@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>곡성 양수발전소 건설 타당성 조사</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .kpi-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #1E3A8A; /* Deep Blue */
+        }
+        .kpi-label {
+            font-size: 1rem;
+            color: #4B5563;
+            margin-top: 0.5rem;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 900;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .flowchart-step {
+            background-color: #DBEAFE; /* Light Blue */
+            color: #1E3A8A; /* Deep Blue */
+            border: 2px solid #93C5FD; /* Mid Blue */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+        }
+        .flowchart-arrow {
+            font-size: 2rem;
+            color: #1E3A8A;
+            align-self: center;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-black text-blue-900">곡성양수 건설 타당성조사</h1>
+            <p class="text-lg text-gray-700 mt-2">2차 중간보고 시각화</p>
+        </header>
+
+        <section class="mb-16">
+            <h2 class="section-title">프로젝트 개요</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="kpi-card">
+                    <div class="kpi-value">1.64조 원</div>
+                    <div class="kpi-label">총사업비</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">112개월</div>
+                    <div class="kpi-label">총 공사 기간</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">22.3%</div>
+                    <div class="kpi-label">연평균 이용률</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-value">977.4 GWh</div>
+                    <div class="kpi-label">연평균 발전량</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-md p-6">
+            <h2 class="section-title">송전선로 접속 방안</h2>
+            <p class="text-center text-gray-700 mb-4">여러 대안 검토 결과, 인허가·민원 최소화 및 경제성 확보를 위해</p>
+            <div class="text-center font-bold text-blue-900 text-2xl">154 kV 구례 접속안 채택</div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-md p-6">
+            <h2 class="section-title">시설 배치 최적화: 안정성 및 경제성 확보</h2>
+            <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">
+                지질조사 결과를 바탕으로 지하발전소 위치를 재조정하고 설계를 최적화하여 구조적 안정성을 높이고 공사비 절감 및 인허가 리스크를 크게 완화
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-start text-center">
+              <div class="flex flex-col items-center">
+                <div class="text-6xl mb-2">🛡️</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-2">구조 안정성 확보</h3>
+                <p class="text-gray-700">지질 이상대 회피로 대규모 지하 공동 안정성 증대</p>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="text-6xl mb-2">📉</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-2">상부댐 높이 11m 축소</h3>
+                <p class="text-gray-700">구조·시공성 고려한 최적화로 규모 및 비용 저감</p>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="text-6xl mb-2">🚇</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-2">수로터널 350m 단축</h3>
+                <p class="text-gray-700">연장 단축으로 직접 공사비 절감</p>
+              </div>
+              <div class="flex flex-col items-center">
+                <div class="text-6xl mb-2">📄</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-2">인허가 리스크 완화</h3>
+                <p class="text-gray-700">상부 조합수조 제외로 산림청·환경부 협의 부담 경감</p>
+              </div>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="section-title">경제성 분석 결과</h2>
+             <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">
+                비용편익분석(B/C) 결과 1.41, 내부수익률(IRR) 6.5%로 나타나 경제적 타당성이 우수한 것으로 평가. 이는 연료비 절감, 환경 개선, 공급 안정성 증대 편익을 종합적으로 고려한 결과.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">경제성 분석 지표</h3>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="economicAnalysisChart" role="img" aria-label="경제성 분석 지표: B/C 1.41, IRR 6.5%"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4">주요 편익 구성</h3>
+                    <div class="chart-container" style="height:300px;">
+                        <canvas id="benefitCompositionChart" role="img" aria-label="편익 구성: 연료비 절감, 환경 개선, 공급지장비용 저감"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mt-2">※ 예시 구성비(임시)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 bg-white rounded-lg shadow-md p-6">
+            <h2 class="section-title">핵심 쟁점 및 향후 과제 <span class="text-sm font-semibold text-gray-500 align-top">(보완 제안)</span></h2>
+            <p class="text-center text-gray-700 mb-8 max-w-3xl mx-auto">
+                KDI 예비타당성조사의 설득력 강화를 위해, 분석 모델의 가정을 현실화하고 논리를 보강하는 방향으로 5가지 핵심 과제를 도출하여 개선을 추진 요청.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-4 text-center">📈 경제성 분석 모델 보완</h3>
+                    <ul class="space-y-4">
+                        <li class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <p class="font-bold">장기 신재생에너지 전망 현실화</p>
+                            <p class="text-sm text-gray-700">'2050 탄소중립 시나리오'를 적용하여 미래 신재생에너지 보급 확대 추세를 반영하고 양수발전의 필요성 강조.</p>
+                        </li>
+                        <li class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <p class="font-bold">핵심 편익 항목 추가</p>
+                            <p class="text-sm text-gray-700">'신재생에너지 출력제어 완화'에 따른 국가적 편익을 계량화하여 경제성 분석에 추가 반영.</p>
+                        </li>
+                    </ul>
+                </div>
+                 <div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-4 text-center">📊 재무성 분석 모델 보완</h3>
+                    <ul class="space-y-4">
+                        <li class="p-4 bg-green-50 rounded-lg border border-green-200">
+                            <p class="font-bold">분석 기준 일원화</p>
+                            <p class="text-sm text-gray-700">할인율을 KDI 기준(4.5%)으로 조정하고, 자금 조달 구조를 50:50으로 현실화.</p>
+                        </li>
+                        <li class="p-4 bg-green-50 rounded-lg border border-green-200">
+                            <p class="font-bold">비용 및 수익 모델 정교화</p>
+                            <p class="text-sm text-gray-700">공사비 낙찰률 및 현실적 주기기 교체 비용을 반영하고, CP 및 보조서비스 수익을 포함한 통합 수익 모델로 업데이트.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-16 bg-white rounded-lg shadow-md p-6">
+          <h2 class="section-title">주요 일정</h2>
+          <ul class="max-w-2xl mx-auto space-y-3">
+            <li class="flex justify-between border-b pb-2">
+              <span class="font-semibold text-gray-800">종합설계 착수</span><span class="text-gray-700">2026.06</span>
+            </li>
+            <li class="flex justify-between border-b pb-2">
+              <span class="font-semibold text-gray-800">공사 착공</span><span class="text-gray-700">2028.03</span>
+            </li>
+            <li class="flex justify-between border-b pb-2">
+              <span class="font-semibold text-gray-800">본 공사·송전 접속 착공</span><span class="text-gray-700">2029.06</span>
+            </li>
+            <li class="flex justify-between">
+              <span class="font-semibold text-gray-800">준공 예정</span><span class="text-gray-700">2037.06</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="section-title">향후 추진 계획</h2>
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <div class="flowchart-step">~9월: KDI 예타<br>사업계획서 제출</div>
+                <div class="flowchart-arrow">➡️</div>
+                <div class="flowchart-step">~10월: 최종 분석 보고서<br>(보완자료) 제출</div>
+                <div class="flowchart-arrow">➡️</div>
+                <div class="flowchart-step">차주 중: 재무 분석<br>용역사 회의 소집</div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const commonChartOptions = {
+                maintainAspectRatio: false,
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                }
+            };
+
+            const economicAnalysisCtx = document.getElementById('economicAnalysisChart').getContext('2d');
+            new Chart(economicAnalysisCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['B/C Ratio', 'IRR (%)'],
+                    datasets: [{
+                        label: '경제성 분석 결과',
+                        data: [1.41, 6.5],
+                        backgroundColor: ['#2563EB', '#3B82F6'],
+                        borderColor: ['#1D4ED8', '#2563EB'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    ...commonChartOptions,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '값'
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...commonChartOptions.plugins,
+                         legend: { display: false },
+                         tooltip: {
+                            callbacks: {
+                                label: (ctx) => ctx.label === 'IRR (%)' ? `IRR: ${ctx.parsed.y}%` : `B/C: ${ctx.parsed.y}`
+                            }
+                        }
+                    }
+                }
+            });
+
+            const benefitCompositionCtx = document.getElementById('benefitCompositionChart').getContext('2d');
+            new Chart(benefitCompositionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['연료비 절감 편익', '환경 개선 편익', '공급지장비용 저감 편익'],
+                    datasets: [{
+                        label: '편익 구성',
+                        data: [50, 35, 15], // Example data
+                        backgroundColor: [
+                            '#3B82F6',
+                            '#60A5FA',
+                            '#93C5FD'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    ...commonChartOptions
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
